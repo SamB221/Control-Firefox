@@ -3,7 +3,7 @@
   "name": "Control",
   "version": "1.0",
 
-  "description": "Adds a red border to all webpages matching mozilla.org.",
+  "description": "Lets you take back control of your time",
 
   "icons": {
     "48": "icons/border-48.png"
@@ -11,8 +11,12 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.mozilla.org/*"],
-      "js": ["control.js"]
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["control.js"],
+      "css": [
+        "css/hide_elements.css",
+        "css/main_page.css"
+      ]
     }
   ]
 }

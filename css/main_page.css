@@ -1,0 +1,14 @@
+#feed,
+ytd-browse[page-subtype = home] {
+    display: none;
+}
+
+#shorts-inner-container,
+ytd-browse[page-subtype = shorts] {
+    display: none;
+}
+
+#feed,
+ytd-browse[page-subtype = subscriptions] {
+    display: none;
+}

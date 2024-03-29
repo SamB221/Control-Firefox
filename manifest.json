@@ -6,7 +6,7 @@
   "description": "Lets you take back control of your time",
 
   "icons": {
-    "48": "icons/border-48.png"
+    "48": "icons/control_simple.svg"
   },
 
   "content_scripts": [

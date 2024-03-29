@@ -20,9 +20,27 @@ div.FOioVk_DUTmZIKKa82Mm1 {
 }
 
 /*removes other feeds*/
-div._3jiriKeNer8y0-1r6oWIFM._3rS8YTDjcT7fs0k9W4rxDG {
+div._3jiriKeNer8y0-1r6oWIFM._3rS8YTDjcT7fs0k9W4rxDG,
+div.wBtTDilkW_rtT2k5x3eie {
     display: none;
 }
+
+/*cleans sidebar*/
+div._1b1Jalg2nxA_Z-BjKXRfAV,
+div._3RPJ8hHnfFohktLZca18J6 {
+    display: none;
+}
+
+/*removes feed in popular*/
+.subredditvars-r-popular div._1OVBBWLtHoSPfGCRaPzpTf._3nSp9cdBpqL13CqjdMr2L_._2OVNlZuUd8L9v0yVECZ2iA {
+    display: none;
+}
+/*centers and styles sidebar*/
+.subredditvars-r-popular div._3Kd8DQpBIbsr5E1JcrMFTY._1tvThPWQpORoc2taKebHxs,
+.subredditvars-r-popular div._2vEf-C2keJaBMY9qk_BxVn {
+    flex-grow: 1;
+    width: auto;
+} 
 
 
 /*TODO: make it look cleaner, delete search if wanted*/

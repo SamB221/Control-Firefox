@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Control",
   "version": "1.0",
-
+  "permissions": ["tabs"],
   "description": "Lets you take back control of your time",
 
   "icons": {

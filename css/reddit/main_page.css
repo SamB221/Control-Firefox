@@ -1,0 +1,28 @@
+/*deletes main feed when not logged in*/
+div.subgrid-container {
+    display: none;
+}
+
+/*deletes main feed*/
+div.rpBJOHq2PR60pnwJlUyP0,
+div._2lHXa-mLMsRfm1Q5JxgU4r {
+    display: none;
+}
+
+/* removes trending today*/ 
+div#TrendingPostsContainer {
+    display: none;
+}
+
+/*removes notification bell*/
+div.FOioVk_DUTmZIKKa82Mm1 {
+    display: none;
+}
+
+/*removes other feeds*/
+div._3jiriKeNer8y0-1r6oWIFM._3rS8YTDjcT7fs0k9W4rxDG {
+    display: none;
+}
+
+
+/*TODO: make it look cleaner, delete search if wanted*/

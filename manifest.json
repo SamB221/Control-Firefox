@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Control",
   "version": "1.0",
 
@@ -12,11 +12,17 @@
   "content_scripts": [
     {
       "matches": ["https://www.youtube.com/*"],
-      "js": ["control.js"],
+      "js": ["js/control.js"],
       "css": [
-        "css/hide_elements.css",
-        "css/main_page.css"
+        "css/youtube/hide_elements.css",
+        "css/youtube/main_page.css"
       ]
+    },
+
+    {
+      "matches": ["*://*.reddit.com/*"],
+      "js": ["js/control.js"],
+      "css": ["css/reddit/main_page.css"]
     }
   ]
 }

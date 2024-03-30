@@ -1,0 +1,9 @@
+/* removes trending today*/ 
+div#TrendingPostsContainer {
+    display: none;
+}
+
+/*removes drop down from search*/
+div#SearchDropdownContent {
+    display: none;
+}

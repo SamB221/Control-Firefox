@@ -1,17 +1,29 @@
 {
   "manifest_version": 3,
-  "name": "Control",
+  "name": "Control for Reddit",
   "version": "1.0",
-  "permissions": ["tabs"],
-  "description": "Lets you take back control of your time",
+  "host_permissions": [
+    "*://*.reddit.com/*", 
+    "*://www.youtube.com/*"
+  ],
+  "description": "Lets you take back control of your time from Reddit by removing feeds",
 
   "icons": {
     "48": "icons/control_simple.svg"
   },
 
+  "options_ui" : {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+
+  "action": {
+    "default_popup": "popup.html"
+  },
+
   "content_scripts": [
     {
-      "matches": ["https://www.youtube.com/*"],
+      "matches": ["*://*.youtube.com/*"],
       "js": ["js/control.js"],
       "css": [
         "css/youtube/hide_elements.css",

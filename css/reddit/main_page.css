@@ -35,12 +35,22 @@ div._3RPJ8hHnfFohktLZca18J6 {
 .subredditvars-r-popular div._1OVBBWLtHoSPfGCRaPzpTf._3nSp9cdBpqL13CqjdMr2L_._2OVNlZuUd8L9v0yVECZ2iA {
     display: none;
 }
+
 /*centers and styles sidebar*/
 .subredditvars-r-popular div._3Kd8DQpBIbsr5E1JcrMFTY._1tvThPWQpORoc2taKebHxs,
 .subredditvars-r-popular div._2vEf-C2keJaBMY9qk_BxVn {
     flex-grow: 1;
     width: auto;
 } 
+div.hpxKmfWP2ZiwdKaWpefMn {
+    background-image: none;
+    background-color: #FF5700;
+}  
+
+/*removes drop down from search*/
+div#SearchDropdownContent {
+    display: none;
+}
 
 
 /*TODO: make it look cleaner, delete search if wanted*/

@@ -1,0 +1,15 @@
+h1 {
+    text-align: center;
+    color: #FF5700;
+    font-size: 30px;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    height: 200px;   
+    margin:0;
+    padding:10px;
+    border: solid #FF5700;
+    border-width: 5px;
+    border-radius: 2px;
+}

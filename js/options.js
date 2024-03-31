@@ -8,8 +8,6 @@ function initialize() {
             if (data[i+""] !== undefined) {
                 checks[i] = data[i+""];
                 document.getElementById(i+"").checked = checks[i];
-            } else {
-                checks[i] = false;
             }
         }
         updateImage();

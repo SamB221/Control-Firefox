@@ -4,31 +4,34 @@
         <link rel="stylesheet" href="css/popup.css">
     </head>
     <body>
-        <h1 id="title">Preferences:</h1>
-        <div id=c2 class="formContainer">
-            <form>
-                <label class="switch">
-                    <input type="checkbox" id="0" name="main">
-                    <span class="slider"></span>
-                </label>
-                <label id="label0" for="main"> Remove main feeds</label><br>
-                <label class="switch">
-                    <input type="checkbox" id="1" name="subreddit">  
-                    <span class="slider"></span>
-                </label>
-                <label id="label1" for="subreddit"> Remove subreddit feeds</label><br>
-                <label class="switch">
-                    <input type="checkbox" id="2" name="trending">
-                    <span class="slider"></span>
-                </label>
-                <label id="label2" for="trending"> Remove suggestions</label><br>
-                <label class="switch">
-                    <input type="checkbox" id="3" name="notifs"">
-                    <span class="slider"></span>
-                </label>
-                <label id="label3" for="notifs"> Remove notifications</label>
-            </form> 
+        <div id=c1 class="container">
+            <h1 id="title">Preferences:</h1>
+            <div id=c2 class="formContainer">
+                <form>
+                    <label class="switch">
+                        <input type="checkbox" id="0" name="main">
+                        <span class="slider"></span>
+                    </label>
+                    <label class="textLabel" for="main"> Remove main feeds</label><br>
+                    <label class="switch">
+                        <input type="checkbox" id="1" name="subreddit">  
+                        <span class="slider"></span>
+                    </label>
+                    <label class="textLabel" for="subreddit"> Remove subreddit feeds</label><br>
+                    <label class="switch">
+                        <input type="checkbox" id="2" name="trending">
+                        <span class="slider"></span>
+                    </label>
+                    <label class="textLabel" for="trending"> Remove suggestions</label><br>
+                    <label class="switch">
+                        <input type="checkbox" id="3" name="notifs"">
+                        <span class="slider"></span>
+                    </label>
+                    <label class="textLabel" for="notifs"> Remove notifications</label>
+                </form> 
+            </div>
         </div>
+        <p id="footer">Control for Reddit</p>
         <script src="js/options.js"></script>
     </body>
 </html>

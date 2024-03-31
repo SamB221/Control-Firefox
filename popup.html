@@ -4,17 +4,31 @@
         <link rel="stylesheet" href="css/popup.css">
     </head>
     <body>
-        <h1>Preferences:</h1>
-        <form>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-            <label for="vehicle1"> Remove main feeds</label><br>
-            <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-            <label for="vehicle2"> Remove subreddit feeds</label><br>
-            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-            <label for="vehicle1"> Remove trending & dropdown</label><br>
-            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-            <label for="vehicle3"> Remove notifications</label>
-          </form> 
-          <script src="js/options.js"></script>
+        <h1 id="title">Preferences:</h1>
+        <div id=c2 class="formContainer">
+            <form>
+                <label class="switch">
+                    <input type="checkbox" id="0" name="main">
+                    <span class="slider"></span>
+                </label>
+                <label id="label0" for="main"> Remove main feeds</label><br>
+                <label class="switch">
+                    <input type="checkbox" id="1" name="subreddit">  
+                    <span class="slider"></span>
+                </label>
+                <label id="label1" for="subreddit"> Remove subreddit feeds</label><br>
+                <label class="switch">
+                    <input type="checkbox" id="2" name="trending">
+                    <span class="slider"></span>
+                </label>
+                <label id="label2" for="trending"> Remove suggestions</label><br>
+                <label class="switch">
+                    <input type="checkbox" id="3" name="notifs"">
+                    <span class="slider"></span>
+                </label>
+                <label id="label3" for="notifs"> Remove notifications</label>
+            </form> 
+        </div>
+        <script src="js/options.js"></script>
     </body>
 </html>

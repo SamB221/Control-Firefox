@@ -4,18 +4,30 @@
         <link rel="stylesheet" href="css/options.css">
     </head>
     <body>
-        <div id = c1 class="container">
-            <h1>Preferences:</h1>
-            <div id = c2 class="formContainer">
+        <div id=c1 class="container">
+            <h1 id="title">Preferences:</h1>
+            <div id=c2 class="formContainer">
                 <form>
-                    <input type="checkbox" id="0" name="main">
-                    <label for="vehicle1"> Remove main feeds</label><br>
-                    <input type="checkbox" id="1" name="subreddit">
-                    <label for="vehicle2"> Remove subreddit feeds</label><br>
-                    <input type="checkbox" id="2" name="trending">
-                    <label for="vehicle1"> Remove trending & dropdown</label><br>
-                    <input type="checkbox" id="3" name="notifs"">
-                    <label for="vehicle3"> Remove notifications</label>
+                    <label class="switch">
+                        <input type="checkbox" id="0" name="main">
+                        <span class="slider"></span>
+                    </label>
+                    <label id="label0" for="main"> Remove main feeds</label><br>
+                    <label class="switch">
+                        <input type="checkbox" id="1" name="subreddit">  
+                        <span class="slider"></span>
+                    </label>
+                    <label id="label1" for="subreddit"> Remove subreddit feeds</label><br>
+                    <label class="switch">
+                        <input type="checkbox" id="2" name="trending">
+                        <span class="slider"></span>
+                    </label>
+                    <label id="label2" for="trending"> Remove suggestions</label><br>
+                    <label class="switch">
+                        <input type="checkbox" id="3" name="notifs"">
+                        <span class="slider"></span>
+                    </label>
+                    <label id="label3" for="notifs"> Remove notifications</label>
                 </form> 
             </div>
         </div>

@@ -39,9 +39,11 @@ function updateImage() {
         if (checks[i]) {
             document.getElementById("c1").style.borderColor = "#FF5700";
             document.getElementById("c1").style.backgroundImage = 'url("../icons/control_orange.svg")';
+            document.getElementById("title").style.color = "#FF5700";
             return;
         }
     }
     document.getElementById("c1").style.borderColor = "#272727";
     document.getElementById("c1").style.backgroundImage = 'url("../icons/control_grey.svg")';
+    document.getElementById("title").style.color = "#272727";
 }

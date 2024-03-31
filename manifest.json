@@ -11,6 +11,12 @@
   ],
   "description": "Lets you take back control of your time from Reddit by removing feeds",
 
+  "browser_specific_settings": {
+    "gecko": {
+        "id": "extensionname@example.org"
+    }
+  },
+
   "icons": {
     "48": "icons/control_simple.svg"
   },

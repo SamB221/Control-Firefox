@@ -1,6 +1,9 @@
 const numOfOptions = 4;
 const checks = new Array(numOfOptions).fill(false);
 
+document.addEventListener("DOMContentLoaded", initialize);
+document.querySelector("form").addEventListener("change", saveOptions);
+
 function initialize() {
     chrome.storage.sync.get(null, function(data) {
         for (let i = 0; i < numOfOptions; i++) {
@@ -15,29 +18,25 @@ function initialize() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", initialize);
-document.querySelector("form").addEventListener("change", saveOptions);
-
-
 function saveOptions(e) {
     // toggles check
     checks[e.target.id] = !checks[e.target.id];
     updateImage();
 
-    // Update Chrome storage
+    // updates browser storage
     const data = {};
     for (let i = 0; i < numOfOptions; i++) {
         data[i+""] = checks[i];
     }
     chrome.storage.sync.set(data);
-    
     e.preventDefault();
-}
 
-function removeSheet() {
-    for (i = 0; i < document.styleSheets.length; i++) {
-        if (!checks[i]) void(document.styleSheets.item(i).disabled = true);
-    }
+    // reload page if changes are applied
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        chrome.tabs.sendMessage(tabs[0].id, {
+        action: 'reloadCSS',
+        });
+    });
 }
 
 function updateImage() {

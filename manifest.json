@@ -43,13 +43,18 @@
     {
       "matches": ["*://*.reddit.com/*"],
       "js": ["js/control.js"],
-      "css": [
-        "css/reddit/main_page.css",
-        "css/reddit/not_logged_in.css",
-        "css/reddit/notifications.css",
-        "css/reddit/subreddits.css",
-        "css/reddit/trending.css"
-      ]
+      "run_at" : "document_start"
     }
-  ]
+  ],
+
+  "web_accessible_resources": [{ 
+    "resources": [
+      "css/reddit/main_page.css",
+      "css/reddit/not_logged_in.css",
+      "css/reddit/notifications.css",
+      "css/reddit/subreddits.css",
+      "css/reddit/trending.css"
+    ],
+    "matches": ["*://*.reddit.com/*"]
+  }]
 }

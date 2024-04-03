@@ -1,7 +1,8 @@
 /*deletes main feeds*/
 div.rpBJOHq2PR60pnwJlUyP0,
-div._2lHXa-mLMsRfm1Q5JxgU4r {
-    display: none;
+div._2lHXa-mLMsRfm1Q5JxgU4r,
+div.wBtTDilkW_rtT2k5x3eie {
+    display: none !important;
 }
 
 /*cleans sidebars*/
@@ -11,7 +12,8 @@ div._3RPJ8hHnfFohktLZca18J6 {
 }
 
 /*removes feed in popular*/
-.subredditvars-r-popular div._1OVBBWLtHoSPfGCRaPzpTf._3nSp9cdBpqL13CqjdMr2L_._2OVNlZuUd8L9v0yVECZ2iA {
+.subredditvars-r-popular div._1OVBBWLtHoSPfGCRaPzpTf._3nSp9cdBpqL13CqjdMr2L_._2OVNlZuUd8L9v0yVECZ2iA,
+.subredditvars-r-popular div._3Tc8YYRhVDX9vlR0XePZfH._365FiUZ11efXHV7l7fNp6K{
     display: none;
 }
 /*centers and styles sidebar*/
@@ -21,6 +23,20 @@ div._3RPJ8hHnfFohktLZca18J6 {
     width: auto;
 } 
 div.hpxKmfWP2ZiwdKaWpefMn {
-    background-image: none;
-    background-color: #FF5700;
-}  
+    background-image: none !important;
+    background-color: #FF5700 !important;
+} 
+
+/*for users not logged in*/
+.shreddit-feed {
+    display: none;
+}
+main#main-content.main.w-full.flex-grid--main-container-card.right-sidebar-s {
+    display: none;
+}
+
+/*removes subreddit bar*/
+div._3jiriKeNer8y0-1r6oWIFM._3rS8YTDjcT7fs0k9W4rxDG,
+div.wBtTDilkW_rtT2k5x3eie {
+    display: none;
+}

@@ -1,8 +1,7 @@
 const sheets = [
     "main_page",
-    "subreddits",
     "trending",
-    "notifications",
+    "notifications"
 ];
 
 initialize();
@@ -30,8 +29,8 @@ function loadCSS(file) {
 
 // removes css file from doc
 function unloadCSS(file) {
-  var cssNode = document.getElementById(file);
-  cssNode && cssNode.parentNode.removeChild(cssNode);
+    var cssNode = document.getElementById(file);
+    cssNode && cssNode.parentNode.removeChild(cssNode);
 }
 
 // reloads upon message from extension's popup
@@ -39,4 +38,4 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'reloadCSS') {
         initialize();
     }
-  });
+});

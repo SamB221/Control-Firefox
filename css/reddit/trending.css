@@ -7,3 +7,8 @@ div#TrendingPostsContainer {
 div#SearchDropdownContent {
     display: none;
 }
+
+/*for users not logged in*/
+div.masthead.w {
+    display: none;
+}

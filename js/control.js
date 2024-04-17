@@ -17,7 +17,7 @@ class Sheet {
             if (this.notAppliedTo[i].test(currentUrl)) return false;
         }
 
-        return shouldApply;
+        return true;
     }
 }
 

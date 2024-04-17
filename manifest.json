@@ -2,9 +2,7 @@
   "manifest_version": 3,
   "name": "Control for Reddit",
   "version": "1.0",
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
   "host_permissions": [
     "*://*.reddit.com/*", 
     "*://www.youtube.com/*"

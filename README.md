@@ -3,3 +3,5 @@ about:debugging#/runtime/this-firefox
 
 Firefox version of control
 TODO: greyscale, options page, individual settings
+
+https://help.autify.com/docs/how-to-fix-css-selector-errors

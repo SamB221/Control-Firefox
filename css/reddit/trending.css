@@ -1,14 +1,17 @@
 /* removes trending today*/ 
 div#TrendingPostsContainer {
-    display: none;
+    display: none !important;
 }
 
 /*removes drop down from search*/
 div#SearchDropdownContent {
-    display: none;
+    display: none !important;
 }
 
-/*for users not logged in*/
-div.masthead.w {
-    display: none;
+shreddit-gallery-carousel {
+    display: none !important;
+}
+
+ul#reddit-trending-searches-partial-container {
+    display: none !important;
 }

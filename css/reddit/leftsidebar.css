@@ -1,0 +1,24 @@
+/*removes left side bar*/
+reddit-recent-pages {
+    display: none;
+}
+left-nav-communities-controller {
+    display: none;
+}
+div#TOPICS {
+    display: none !important;
+}
+div#RESOURCES {
+    display: none !important;
+}
+div#right-sidebar-container {
+    display: none !important;
+}
+
+div#communities_section {
+    display: none !important;
+}
+
+.left-nav-communities-controller {
+    display: none !important;
+}

@@ -1,23 +1,34 @@
 // each stylesheet needs info about when it should be turned on
 class Sheet {
-    constructor(name, appliedTo, notAppliedTo) {
-      this.name = name;
-      this.appliedTo = appliedTo;
-      this.notAppliedTo = notAppliedTo;
+    constructor(name, whiteList, blackList, extraSheets) {
+        this.name = name;
+        this.whiteList = whiteList;
+        this.blackList = blackList;
+        this.extraSheets = extraSheets;
     }
   
     appliesTo(currentUrl) {
-        for (let i = 0; i < this.appliedTo.length; i++) {
-            if (this.appliedTo[i].test(currentUrl)) {
-                return true;
-            }
+        for (let i = 0; i < this.whiteList.length; i++) {
+            if (this.whiteList[i].test(currentUrl)) return true;
         }
 
-        for (let i = 0; i < this.notAppliedTo.length; i++) {
-            if (this.notAppliedTo[i].test(currentUrl)) return false;
+        for (let i = 0; i < this.blackList.length; i++) {
+            if (this.blackList[i].test(currentUrl)) return false;
         }
 
         return true;
+    }
+
+    loadExtraSheets() {
+        for (let i = 0; i < this.extraSheets.length; i++) {
+            loadCSS(this.extraSheets[i]);
+        }
+    }
+
+    unloadExtraSheets() {
+        for (let i = 0; i < this.extraSheets.length; i++) {
+            unloadCSS(this.extraSheets[i]);
+        }
     }
 }
 
@@ -27,23 +38,38 @@ const sheets = [
         [new RegExp("^.*://.*\\.reddit\\.com/r/all.*$"),
         new RegExp("^.*://.*\\.reddit\\.com/r/popular.*$"),
         new RegExp("^.*://.*\\.reddit\\.com.$")], 
-        [new RegExp("^.*://.*\\.reddit\\.com/r.*$")]),
-    new Sheet("trending", [], []),
-    new Sheet("notifications", [], [])
+        [new RegExp("^.*://.*\\.reddit\\.com/r.*$")],
+        []),
+    new Sheet("subreddits", [], 
+        [new RegExp("^.*://.*\\.reddit\\.com/r/all.*$"),
+        new RegExp("^.*://.*\\.reddit\\.com/r/popular.*$"),
+        new RegExp("^.*://.*\\.reddit\\.com.$"),
+        new RegExp("^.*://.*\\.reddit\\.com/\\?.*$")],
+        ["leftsidebar"]),
+    new Sheet("trending", [], [], []),
+    new Sheet("notifications", [], [], [])
 ]; // for future use: new RegExp("^.*://.*\\.reddit\\.com/.*$") = all pages
-
+// add reddit/search
 
 initialize();
 
 function initialize() {
-    alert("load");
     var currentUrl = window.location.href;
     // accesses preferences from storage to determine style sheets
     chrome.storage.sync.get(null, function(data) {
         sheets.forEach((sheet, index) => {
-            if (!data[index]) unloadCSS(sheet.name);
-            else if (!sheet.appliesTo(currentUrl)) {alert(sheet.name + " does not apply"); unloadCSS(sheet.name);}
-            else {alert(sheet.name + " does apply");loadCSS(sheet.name);}
+            console.log(sheet.name);
+            if (!data[index]) {
+                unloadCSS(sheet.name);
+                sheet.unloadExtraSheets();
+            } else if (!sheet.appliesTo(currentUrl)) {
+                unloadCSS(sheet.name);
+                sheet.loadExtraSheets();
+            }
+            else {
+                loadCSS(sheet.name);
+                sheet.loadExtraSheets();
+            }
         });
     });
 }
@@ -78,7 +104,6 @@ new MutationObserver(() => {
   const url = location.href;
   if (url !== lastUrl) {
     lastUrl = url;
-    console.log("cool!");
     initialize();
   }
 }).observe(document, {subtree: true, childList: true});

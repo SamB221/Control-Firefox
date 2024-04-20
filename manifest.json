@@ -37,9 +37,9 @@
   "web_accessible_resources": [{ 
     "resources": [
       "css/reddit/main_page.css",
-      "css/reddit/not_logged_in.css",
-      "css/reddit/notifications.css",
       "css/reddit/subreddits.css",
+      "css/reddit/leftsidebar.css",
+      "css/reddit/notifications.css",
       "css/reddit/trending.css"
     ],
     "matches": ["*://*.reddit.com/*"]

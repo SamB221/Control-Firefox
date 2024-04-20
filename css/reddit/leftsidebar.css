@@ -15,3 +15,6 @@ div#TOPICS {
 div#RESOURCES {
     display: none !important;
 }
+faceplate-partial#subreddit-right-rail__partial {
+    display: none;
+}

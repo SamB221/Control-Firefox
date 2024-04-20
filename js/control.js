@@ -40,16 +40,17 @@ const sheets = [
         new RegExp("^.*://.*\\.reddit\\.com.$")], 
         [new RegExp("^.*://.*\\.reddit\\.com/r.*$")],
         []),
-    new Sheet("subreddits", [], 
-        [new RegExp("^.*://.*\\.reddit\\.com/r/all.*$"),
+    new Sheet("subreddits", 
+        [],
+        [new RegExp("^.*://.*\\.reddit\\.com/r/.*/comments/.*$"),
+        new RegExp("^.*://.*\\.reddit\\.com/r/all.*$"),
         new RegExp("^.*://.*\\.reddit\\.com/r/popular.*$"),
         new RegExp("^.*://.*\\.reddit\\.com.$"),
         new RegExp("^.*://.*\\.reddit\\.com/\\?.*$")],
         ["leftsidebar"]),
     new Sheet("trending", [], [], []),
     new Sheet("notifications", [], [], [])
-]; // for future use: new RegExp("^.*://.*\\.reddit\\.com/.*$") = all pages
-// add reddit/search
+];
 
 initialize();
 

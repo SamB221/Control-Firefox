@@ -8,7 +8,7 @@
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "extensionname@example.org"
+      "strict_min_version": "42.0"
     }
   },
 

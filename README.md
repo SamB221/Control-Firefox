@@ -1,7 +1,4 @@
-https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension
-about:debugging#/runtime/this-firefox
+The Firefox version of control
 
-Firefox version of control
-TODO: greyscale, options page, individual settings
-
-https://help.autify.com/docs/how-to-fix-css-selector-errors
+Allows you to turn off Reddit features, such as the main feed, 
+subreddit feeds, notifications, and the trending page. 

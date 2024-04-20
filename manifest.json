@@ -3,15 +3,12 @@
   "name": "Control for Reddit",
   "version": "1.0",
   "permissions": ["storage"],
-  "host_permissions": [
-    "*://*.reddit.com/*", 
-    "*://www.youtube.com/*"
-  ],
-  "description": "Lets you take back control of your time from Reddit by removing feeds",
+  "host_permissions": ["*://*.reddit.com/*"],
+  "description": "Lets you take control of your time by limiting reddit features",
 
   "browser_specific_settings": {
     "gecko": {
-        "id": "extensionname@example.org"
+      "id": "extensionname@example.org"
     }
   },
 
@@ -29,15 +26,6 @@
   },
 
   "content_scripts": [
-    {
-      "matches": ["*://*.youtube.com/*"],
-      "js": ["js/control.js"],
-      "css": [
-        "css/youtube/hide_elements.css",
-        "css/youtube/main_page.css"
-      ]
-    },
-
     {
       "matches": ["*://*.reddit.com/*"],
       "js": ["js/control.js"],

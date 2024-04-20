@@ -1,4 +1,8 @@
 /*removes left side bar*/
+div#communities_section {
+    display: none !important;
+}
+
 reddit-recent-pages {
     display: none;
 }
@@ -9,16 +13,5 @@ div#TOPICS {
     display: none !important;
 }
 div#RESOURCES {
-    display: none !important;
-}
-div#right-sidebar-container {
-    display: none !important;
-}
-
-div#communities_section {
-    display: none !important;
-}
-
-.left-nav-communities-controller {
     display: none !important;
 }

@@ -1,4 +1,17 @@
-/*deletes all feeds when not logged in
-div.subgrid-container {
+/*removes left side bar*/
+div#communities_section {
+    display: none !important;
+}
+
+reddit-recent-pages {
     display: none;
-}*/
+}
+left-nav-communities-controller {
+    display: none;
+}
+div#TOPICS {
+    display: none !important;
+}
+div#RESOURCES {
+    display: none !important;
+}

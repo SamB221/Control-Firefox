@@ -1,4 +1,4 @@
-// each stylesheet needs info about when it should be turned on
+// each stylesheet needs info about when it should be turned on 
 class Sheet {
     constructor(name, whiteList, blackList, extraSheets) {
         this.name = name;
@@ -49,7 +49,8 @@ const sheets = [
         new RegExp("^.*://.*\\.reddit\\.com/\\?.*$")],
         ["leftsidebar"]),
     new Sheet("trending", [], [], []),
-    new Sheet("notifications", [], [], [])
+    new Sheet("notifications", [], [], []),
+    new Sheet("greyscale", [], [], [])
 ];
 
 initialize();

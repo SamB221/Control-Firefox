@@ -40,7 +40,7 @@
       "css/reddit/leftsidebar.css",
       "css/reddit/notifications.css",
       "css/reddit/trending.css",
-      "css/reddit/greyscale.css"
+      "css/reddit/grayscale.css"
     ],
     "matches": ["*://*.reddit.com/*"]
   }]

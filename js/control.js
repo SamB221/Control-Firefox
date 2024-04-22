@@ -50,7 +50,7 @@ const sheets = [
         ["leftsidebar"]),
     new Sheet("trending", [], [], []),
     new Sheet("notifications", [], [], []),
-    new Sheet("greyscale", [], [], [])
+    new Sheet("grayscale", [], [], [])
 ];
 
 initialize();

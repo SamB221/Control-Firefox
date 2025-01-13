@@ -1,13 +1,15 @@
 // each stylesheet needs info about when it should be turned on 
 class Sheet {
-    constructor(name, whiteList, blackList, extraSheets) {
+    constructor(name, whiteList, blackList, hrefs) {
         this.name = name;
         this.whiteList = whiteList;
         this.blackList = blackList;
-        this.extraSheets = extraSheets;
+        this.hrefs = hrefs;
     }
   
     appliesTo(currentUrl) {
+        if (this.whiteList.length == 0 && this.blackList.length == 0) return false;
+
         for (let i = 0; i < this.whiteList.length; i++) {
             if (this.whiteList[i].test(currentUrl)) return true;
         }
@@ -19,15 +21,34 @@ class Sheet {
         return true;
     }
 
-    loadExtraSheets() {
-        for (let i = 0; i < this.extraSheets.length; i++) {
-            loadCSS(this.extraSheets[i]);
-        }
+    blockAssigned() {
+        // blocks main content on given page
+        let elements = document.querySelectorAll('main[class]');
+        elements.forEach((element) => {
+            element.remove();
+        });
+        const element = document.querySelector(".masthead");
+        if (element!= null) element.remove();
     }
 
-    unloadExtraSheets() {
-        for (let i = 0; i < this.extraSheets.length; i++) {
-            unloadCSS(this.extraSheets[i]);
+    blockLinks() {
+        if (this.name == "subreddits") {
+            const del = document.querySelectorAll("reddit-recent-pages");
+            del.forEach((element) => {
+                element.remove();
+            });
+
+            const elementsWithoutHref = document.querySelectorAll('[name="LeftNavCommunitiesSection_sNHRQN"]');
+            elementsWithoutHref.forEach(element => {
+                element.remove();
+            });
+        } else if (this.name == "main_page") {
+            const element = document.querySelector('left-nav-top-section');
+            if (element != null) element.remove();
+        }
+
+        for (let i = 0; i < this.hrefs.length; i++) {
+            removeLinks(this.hrefs[i]);
         }
     }
 }
@@ -39,7 +60,7 @@ const sheets = [
         new RegExp("^.*://.*\\.reddit\\.com/r/popular.*$"),
         new RegExp("^.*://.*\\.reddit\\.com.$")], 
         [new RegExp("^.*://.*\\.reddit\\.com/r.*$")],
-        []),
+        ["/?feed=home"]),
     new Sheet("subreddits", 
         [],
         [new RegExp("^.*://.*\\.reddit\\.com/r/.*/comments/.*$"),
@@ -48,9 +69,9 @@ const sheets = [
         new RegExp("^.*://.*\\.reddit\\.com.$"),
         new RegExp("^.*://.*\\.reddit\\.com/\\?.*$"),
         new RegExp("^.*://.*\\.reddit\\.com/user/.*$")],
-        ["leftsidebar"]),
+        ["recent_menu", "communities_menu"]),
     new Sheet("trending", [], [], []),
-    new Sheet("notifications", [], [], []),
+    new Sheet("notifications", [], [], ["inbox"]),
     new Sheet("grayscale", [], [], [])
 ];
 
@@ -63,41 +84,53 @@ function initialize() {
         sheets.forEach((sheet, index) => {
             console.log(sheet.name);
             if (!data[index]) {
-                unloadCSS(sheet.name);
-                sheet.unloadExtraSheets();
-            } else if (!sheet.appliesTo(currentUrl)) {
-                unloadCSS(sheet.name);
-                sheet.loadExtraSheets();
-            }
-            else {
-                loadCSS(sheet.name);
-                sheet.loadExtraSheets();
+                if (sheet.name == "grayscale") {
+                    document.body.style.filter = 'grayscale(0%)';
+                }
+            } else if (sheet.name == "grayscale") {
+                document.body.style.filter = 'grayscale(100%)';
+            } else if (sheet.appliesTo(currentUrl)) {
+                sheet.blockAssigned(); 
+                sheet.blockLinks();
+            } else {
+                sheet.blockLinks();
             }
         });
     });
 }
 
-// adds css file to doc
-function loadCSS(file) {
-    var link = document.createElement("link");
-    link.href = chrome.runtime.getURL('css/reddit/' + file + '.css');
-    link.id = file;
-    console.log(link.href);
-    link.type = "text/css";
-    link.rel = "stylesheet";
-    document.getElementsByTagName("html")[0].appendChild(link);
-}
+function removeLinks(elementName) {
+    // Select all <a> tags 
+    let elementsWithHref = document.querySelectorAll('[href]');
+    // Iterate through each <a> tag and check its href attribute
+    elementsWithHref.forEach(element => {
+        const href = element.getAttribute('href');
+        // Check if href attribute contains the desired substring
+        if (href.includes(elementName)) {
+            element.remove();
+        }
+    });
 
-// removes css file from doc
-function unloadCSS(file) {
-    var cssNode = document.getElementById(file);
-    cssNode && cssNode.parentNode.removeChild(cssNode);
+    const elementsWithoutHref = document.querySelectorAll('[data-part="'+elementName+'"]');
+
+    elementsWithoutHref.forEach(element => {
+        element.remove();
+    });
 }
 
 // reloads upon message from extension's popup
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === 'reloadCSS') {
-        initialize();
+    if (message.action.includes('reloadCSS')) {
+        currentSheet = sheets[Number(message.action.slice(-1))];
+        if (currentSheet.name == "grayscale" || currentSheet.name == "notifications") {
+            initialize();
+        } else {
+            if (currentSheet.appliesTo(window.location.href)) {
+                location.reload(); 
+            } else {
+                initialize();
+            }
+        }
     }
 });
 
@@ -110,3 +143,5 @@ new MutationObserver(() => {
     initialize();
   }
 }).observe(document, {subtree: true, childList: true});
+
+document.addEventListener('DOMContentLoaded', initialize);

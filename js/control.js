@@ -22,13 +22,16 @@ class Sheet {
     }
 
     blockAssigned() {
-        // blocks main content on given page
-        let elements = document.querySelectorAll('main[class]');
-        elements.forEach((element) => {
-            element.remove();
-        });
-        const element = document.querySelector(".masthead");
-        if (element!= null) element.remove();
+        if (this.name == "trending") {
+            const element = document.querySelector(".masthead");
+            if (element!= null) element.remove();
+        } else {
+            // blocks main content on given page
+            let elements = document.querySelectorAll('main[class]');
+            elements.forEach((element) => {
+                element.remove();
+            });
+        }
     }
 
     blockLinks() {
@@ -51,6 +54,12 @@ class Sheet {
             removeLinks(this.hrefs[i]);
         }
     }
+
+    reAddLinks() {
+        for (let i = 0; i < this.hrefs.length; i++) {
+            addLinks(this.hrefs[i]);
+        }
+    }
 }
 
 // all the possible stylesheets to be turned on
@@ -70,7 +79,7 @@ const sheets = [
         new RegExp("^.*://.*\\.reddit\\.com/\\?.*$"),
         new RegExp("^.*://.*\\.reddit\\.com/user/.*$")],
         ["recent_menu", "communities_menu"]),
-    new Sheet("trending", [], [], []),
+    new Sheet("trending", [new RegExp("^.*://.*\\.reddit\\.com.*")], [], []),
     new Sheet("notifications", [], [], ["inbox"]),
     new Sheet("grayscale", [], [], [])
 ];
@@ -86,6 +95,8 @@ function initialize() {
             if (!data[index]) {
                 if (sheet.name == "grayscale") {
                     document.body.style.filter = 'grayscale(0%)';
+                } else {
+                    sheet.reAddLinks();
                 }
             } else if (sheet.name == "grayscale") {
                 document.body.style.filter = 'grayscale(100%)';
@@ -114,7 +125,17 @@ function removeLinks(elementName) {
     const elementsWithoutHref = document.querySelectorAll('[data-part="'+elementName+'"]');
 
     elementsWithoutHref.forEach(element => {
-        element.remove();
+        element.style.display = "none";
+        element.style.pointerEvents = 'none';
+    });
+}
+
+function addLinks(elementName) {
+    const elementsWithoutHref = document.querySelectorAll('[data-part="'+elementName+'"]');
+
+    elementsWithoutHref.forEach(element => {
+        element.style.display = "initial";
+        element.style.pointerEvents = 'auto';
     });
 }
 

@@ -34,7 +34,7 @@ function saveOptions(e) {
     // reload page if changes are applied
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, {
-        action: 'reloadCSS'+e.target.id,
+            action: 'reloadCSS'+e.target.id,
         });
     });
 }

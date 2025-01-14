@@ -94,12 +94,12 @@ function initialize() {
             console.log(sheet.name);
             if (!data[index]) {
                 if (sheet.name == "grayscale") {
-                    document.body.style.filter = 'grayscale(0%)';
-                } else {
+                    document.documentElement.style.filter = 'grayscale(0%)';
+                } else if (sheet.name == "notifications") {
                     sheet.reAddLinks();
                 }
             } else if (sheet.name == "grayscale") {
-                document.body.style.filter = 'grayscale(100%)';
+                document.documentElement.style.filter = 'grayscale(100%)';
             } else if (sheet.appliesTo(currentUrl)) {
                 sheet.blockAssigned(); 
                 sheet.blockLinks();
@@ -125,7 +125,7 @@ function removeLinks(elementName) {
     const elementsWithoutHref = document.querySelectorAll('[data-part="'+elementName+'"]');
 
     elementsWithoutHref.forEach(element => {
-        element.style.display = "none";
+        element.style.visibility = "hidden";
         element.style.pointerEvents = 'none';
     });
 }
@@ -134,7 +134,7 @@ function addLinks(elementName) {
     const elementsWithoutHref = document.querySelectorAll('[data-part="'+elementName+'"]');
 
     elementsWithoutHref.forEach(element => {
-        element.style.display = "initial";
+        element.style.visibility = "visable";
         element.style.pointerEvents = 'auto';
     });
 }

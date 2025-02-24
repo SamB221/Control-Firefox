@@ -22,9 +22,8 @@ class Sheet {
     }
 
     blockAssigned() {
-        if (this.name == "trending") {
-            const element = document.querySelector(".masthead");
-            if (element!= null) element.remove();
+        if (this.name == "sidebar") {
+            removeLeftSidebar();
         } else {
             // blocks main content on given page
             let elements = document.querySelectorAll('main[class]');
@@ -83,7 +82,7 @@ const sheets = [
         new RegExp("^.*://.*\\.reddit.com/settings/*"),
         new RegExp("^.*://.*\\.reddit.com/submit*")],
         ["recent_menu", "communities_menu"]),
-    new Sheet("trending", [new RegExp("^.*://.*\\.reddit\\.com.*")], [], []),
+    new Sheet("sidebar", [new RegExp("^.*://.*\\.reddit\\.com.*")], [], []),
     new Sheet("notifications", [], [], ["inbox"]),
     new Sheet("grayscale", [], [], [])
 ];
@@ -141,6 +140,17 @@ function addLinks(elementName) {
         element.style.visibility = "visable";
         element.style.pointerEvents = 'auto';
     });
+}
+
+function removeLeftSidebar() {
+    const masthead = document.querySelector(".masthead");
+    if (masthead != null) masthead.remove();
+    const sidebar = document.getElementById("left-sidebar");
+    if (sidebar != null) sidebar.remove();
+    const container = document.getElementById("left-sidebar-container");
+    if (container != null) container.remove();
+    //const recents = document.querySelector("recent-posts");
+    //if (recents != null) recents.remove();
 }
 
 // reloads upon message from extension's popup

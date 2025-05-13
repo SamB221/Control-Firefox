@@ -1,5 +1,9 @@
-// each stylesheet needs info about when it should be turned on 
 class Sheet {
+    /* each sheet has two lists of regex urls. whiteList represents
+     * url patterns for which the rules MUST apply over blacklist, and blacklist 
+     * represents url patterns which should not have the rules applied. All other 
+     * urls that do not match either have the rules applied by default.
+     */
     constructor(name, whiteList, blackList, hrefs) {
         this.name = name;
         this.whiteList = whiteList;
@@ -69,7 +73,8 @@ const sheets = [
         new RegExp("^.*://.*\\.reddit\\.com.$")], 
         [new RegExp("^.*://.*\\.reddit\\.com/r.*$"),
         new RegExp("^.*://.*\\.reddit.com/settings/*"),
-        new RegExp("^.*://.*\\.reddit.com/submit*")],
+        new RegExp("^.*://.*\\.reddit.com/submit*"),
+        new RegExp("^.*://.*\\.reddit.com/media*")],
         ["/?feed=home"]),
     new Sheet("subreddits", 
         [],
@@ -80,7 +85,8 @@ const sheets = [
         new RegExp("^.*://.*\\.reddit\\.com/\\?.*$"),
         new RegExp("^.*://.*\\.reddit\\.com/user/.*$"),
         new RegExp("^.*://.*\\.reddit.com/settings/*"),
-        new RegExp("^.*://.*\\.reddit.com/submit*")],
+        new RegExp("^.*://.*\\.reddit.com/submit*"),
+        new RegExp("^.*://.*\\.reddit.com/media*")],
         ["recent_menu", "communities_menu"]),
     new Sheet("sidebar", [new RegExp("^.*://.*\\.reddit\\.com.*")], [], []),
     new Sheet("notifications", [], [], ["inbox"]),
